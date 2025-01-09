@@ -1,4 +1,3 @@
-
 namespace BlogBackend.Domain.Common;
 
 public abstract class BaseEntity : ICreatedByEntity, IModifiedByEntity
