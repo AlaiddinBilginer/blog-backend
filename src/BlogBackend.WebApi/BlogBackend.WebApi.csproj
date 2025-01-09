@@ -11,12 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\BlogBackend.Application\BlogBackend.Application.csproj" />
+    <ProjectReference Include="..\BlogBackend.Infrastructure\BlogBackend.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BlogBackend.Application\BlogBackend.Application.csproj" />
-    <ProjectReference Include="..\BlogBackend.Infrastructure\BlogBackend.Infrastructure.csproj" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
