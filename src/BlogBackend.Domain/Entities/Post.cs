@@ -9,7 +9,7 @@ public sealed class Post : BaseEntity
     public string Slug { get; set; }
     public string Description { get; set; }
     public string Content { get; set; }
-    public string ThumbnailPath { get; set; }
+    public string? ThumbnailPath { get; set; }
     public bool IsPublished { get; private set; }
     public bool IsFeatured { get; set; }
     public DateTimeOffset? PublishedAt { get; private set; }
@@ -26,7 +26,7 @@ public sealed class Post : BaseEntity
 
     private Post() { }
     
-    public static Post Create(string title, string content, string description, string slug, string thumbnailPath, Guid userId, bool isPublished, bool isFeatured, int readingTimeInMinutes)
+    public static Post Create(string title, string content, string description, string slug, Guid userId, int readingTimeInMinutes, string? thumbnailPath)
     {
         return new Post 
         {
@@ -36,11 +36,9 @@ public sealed class Post : BaseEntity
             Description = description,
             UserId = userId,
             Slug = slug,
-            ThumbnailPath = thumbnailPath,
-            IsPublished = isPublished,
-            IsFeatured = isFeatured,
             ReadingTimeInMinutes = readingTimeInMinutes,
             CreatedAt = DateTimeOffset.UtcNow,
+            ThumbnailPath = thumbnailPath
         };
     }
     
@@ -53,6 +51,16 @@ public sealed class Post : BaseEntity
     public void Unpublish()
     {
         IsPublished = false;
+    }
+
+    public void MarkAsFeatured() 
+    {
+        IsFeatured = true;
+    }
+
+    public void UnmarkAsFeatured() 
+    {
+        IsFeatured = false;
     }
 
     public void IncrementLikeCount()

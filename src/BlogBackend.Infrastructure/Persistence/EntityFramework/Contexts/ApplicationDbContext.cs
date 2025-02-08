@@ -17,4 +17,11 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<PostLike> PostLikes { get; set; }  
     public DbSet<UserFavoritePost> UserFavoritePosts { get; set; }
     public DbSet<UserSocialMediaAccount> UserSocialMediaAccounts { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+        
+        base.OnModelCreating(modelBuilder);        
+    }
 }
