@@ -5,8 +5,8 @@ using MediatR;
 
 namespace BlogBackend.Application.Behaviors;
 
-public sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, ResponseDto<TResponse>>
-    where TRequest : IRequest<ResponseDto<TResponse>>
+public sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    where TRequest : IRequest<TResponse>
 {
     private readonly IEnumerable<IValidator<TRequest>> _validators;
 
@@ -15,7 +15,7 @@ public sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<
         _validators = validators;
     }
 
-    public async Task<ResponseDto<TResponse>> Handle(TRequest request, RequestHandlerDelegate<ResponseDto<TResponse>> next, CancellationToken cancellationToken)
+    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
 
         if(_validators.Any()) 
@@ -25,14 +25,13 @@ public sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<
             var validationResults = await Task.WhenAll(_validators.Select(v => v.ValidateAsync(context, cancellationToken)));
 
             var failures = validationResults
-                .Where(result => result.Errors.Any())            
+                .Where(result => result.Errors.Any())
                 .SelectMany(result => result.Errors)
                 .Where(f => f != null)
-                .Select(f => new ValidationError(f.PropertyName, f.ErrorMessage))
                 .ToList();
 
-            if(failures.Any()) 
-                return ResponseDto<TResponse>.Error("Validasyon hatası", failures);
+            if (failures.Any())
+                throw new ValidationException(failures);
         }
 
         return await next();
