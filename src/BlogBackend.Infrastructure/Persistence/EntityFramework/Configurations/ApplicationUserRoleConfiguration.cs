@@ -9,5 +9,7 @@ public class ApplicationUserRoleConfiguration : IEntityTypeConfiguration<Applica
     public void Configure(EntityTypeBuilder<ApplicationUserRole> builder)
     {
         builder.HasKey(ur => new { ur.UserId, ur.RoleId});
+
+        builder.ToTable("identity_user_roles");
     }
 }

@@ -9,5 +9,7 @@ public class ApplicationRoleClaimConfiguration : IEntityTypeConfiguration<Applic
     public void Configure(EntityTypeBuilder<ApplicationRoleClaim> builder)
     {
         builder.HasKey(rc => rc.Id);
+
+        builder.ToTable("identity_role_claims");
     }
 }

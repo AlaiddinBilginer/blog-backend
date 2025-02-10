@@ -26,5 +26,7 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
         builder.HasMany<ApplicationUserRole>().WithOne().HasForeignKey(ur => ur.RoleId).IsRequired();
         builder.HasMany<ApplicationRoleClaim>().WithOne().HasForeignKey(rc => rc.RoleId).IsRequired();
 
+        builder.ToTable("identity_roles");
+
     }
 }

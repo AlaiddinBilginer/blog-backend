@@ -9,5 +9,7 @@ public class ApplicationUserClaimConfiguration : IEntityTypeConfiguration<Applic
     public void Configure(EntityTypeBuilder<ApplicationUserClaim> builder)
     {
         builder.HasKey(rc => rc.Id);
+
+        builder.ToTable("identity_user_claims");
     }
 }

@@ -82,5 +82,7 @@ public class ApplicationUserConfiguration : IEntityTypeConfiguration<Application
             .WithOne(sma => sma.User)
             .HasForeignKey(sma => sma.UserId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.ToTable("identity_users");
     }
 }

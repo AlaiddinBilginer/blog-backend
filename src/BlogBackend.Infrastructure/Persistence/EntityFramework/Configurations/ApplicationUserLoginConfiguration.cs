@@ -15,5 +15,7 @@ public class ApplicationUserLoginConfiguration : IEntityTypeConfiguration<Applic
 
         builder.Property(ul => ul.ProviderKey)
             .HasMaxLength(128);
+
+        builder.ToTable("identity_user_logins");
     }
 }

@@ -15,5 +15,7 @@ public class ApplicationUserTokenConfiguration : IEntityTypeConfiguration<Applic
 
         builder.Property(ut => ut.Name)
             .HasMaxLength(128);
+
+        builder.ToTable("identity_user_tokens");
     }
 }
