@@ -17,7 +17,6 @@ public sealed class Category : BaseEntity
     {
         return new Category
         {
-            Id = Guid.CreateVersion7(),
             Name = name,
             Description = description,
             CreatedAt = DateTimeOffset.UtcNow,

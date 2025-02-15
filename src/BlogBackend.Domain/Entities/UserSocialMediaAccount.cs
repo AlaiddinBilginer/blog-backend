@@ -18,7 +18,6 @@ public sealed class UserSocialMediaAccount : BaseEntity
     {
         return new UserSocialMediaAccount
         {
-            Id = Guid.CreateVersion7(),
             UserId = userId,
             SocialMediaType = socialMediaType,
             Url = url,

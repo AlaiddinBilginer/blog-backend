@@ -24,7 +24,6 @@ public sealed class PostComment : BaseEntity
     {
         return new PostComment
         {
-            Id = Guid.CreateVersion7(),
             Content = content,
             PostId = postId,
             UserId = userId,

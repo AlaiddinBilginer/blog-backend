@@ -30,7 +30,6 @@ public sealed class Post : BaseEntity
     {
         return new Post 
         {
-            Id = Guid.CreateVersion7(),
             Title = title,
             Content = content,
             Description = description,

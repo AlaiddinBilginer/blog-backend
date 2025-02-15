@@ -17,7 +17,6 @@ public sealed class UserFavoritePost : BaseEntity
     {
         return new UserFavoritePost 
         { 
-            Id = Guid.CreateVersion7(), 
             PostId = postId, 
             UserId = userId, 
             CreatedAt = DateTimeOffset.UtcNow 

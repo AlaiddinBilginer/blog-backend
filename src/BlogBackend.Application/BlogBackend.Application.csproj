@@ -17,4 +17,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Posts\Queries\" />
+  </ItemGroup>
+
 </Project>

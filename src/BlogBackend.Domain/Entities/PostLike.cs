@@ -17,7 +17,6 @@ public sealed class PostLike : BaseEntity
     {
         return new PostLike 
         { 
-            Id = Guid.CreateVersion7(), 
             PostId = postId, 
             UserId = userId, 
             CreatedAt = DateTimeOffset.UtcNow 

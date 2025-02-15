@@ -14,8 +14,7 @@ public sealed class PostCategory : BaseEntity
     public static PostCategory Create(Guid postId, Guid categoryId)
     {
         return new PostCategory 
-        { 
-            Id = Guid.CreateVersion7(), 
+        {  
             PostId = postId, 
             CategoryId = categoryId, 
             CreatedAt = DateTimeOffset.UtcNow 

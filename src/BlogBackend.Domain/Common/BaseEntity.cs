@@ -2,6 +2,11 @@ namespace BlogBackend.Domain.Common;
 
 public abstract class BaseEntity : ICreatedByEntity, IModifiedByEntity
 {
+    protected BaseEntity()
+    {
+        Id = Guid.CreateVersion7();
+    }
+
     public virtual Guid Id { get; set; }
     public virtual string? CreatedByUserId { get; set; }
     public virtual DateTimeOffset CreatedAt { get; set; }
